@@ -41,8 +41,10 @@ public class VanillaExpanded {
 
 	@PreInit
 	public void preload(FMLPreInitializationEvent iEvent) {
-		if(FMLCommonHandler.instance().getSide().isClient())
+		if(FMLCommonHandler.instance().getSide().isClient()) {
+			MinecraftForgeClient.preloadTexture("/nexustools/vanillaexpanded/images/block/block.png");
 			MinecraftForgeClient.preloadTexture("/nexustools/vanillaexpanded/images/item/item.png");
+		}
 		Configuration conf = new Configuration(iEvent.getSuggestedConfigurationFile());
 		conf.load();
 		blockButtonObsidianID = conf.getBlock("blockButtonObsidianID", 675).getInt();
