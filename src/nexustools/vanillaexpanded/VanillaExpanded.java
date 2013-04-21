@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
 import nexustools.vanillaexpanded.block.BlockButtonObsidian;
 import nexustools.vanillaexpanded.block.BlockDoorObsidian;
@@ -12,6 +13,7 @@ import nexustools.vanillaexpanded.block.BlockLeverObsidian;
 import nexustools.vanillaexpanded.block.BlockStairsObsidian;
 import nexustools.vanillaexpanded.item.ItemDoorObsidian;
 import nexustools.vanillaexpanded.item.ItemStickObsidian;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PreInit;
@@ -38,6 +40,8 @@ public class VanillaExpanded {
 
 	@PreInit
 	public void preload(FMLPreInitializationEvent iEvent) {
+		if(FMLCommonHandler.instance().getSide().isClient())
+			MinecraftForgeClient.preloadTexture("/nexustools/vanillaexpanded/images/item/item.png");
 		Configuration conf = new Configuration(iEvent.getSuggestedConfigurationFile());
 		conf.load();
 		blockButtonObsidianID = conf.getBlock("blockButtonObsidianID", 675).getInt();

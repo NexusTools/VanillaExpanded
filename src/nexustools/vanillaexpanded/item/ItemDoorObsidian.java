@@ -11,6 +11,7 @@ import nexustools.vanillaexpanded.VanillaExpanded;
 public class ItemDoorObsidian extends ItemDoor {
 	public ItemDoorObsidian(int id) {
 		super(id, Material.rock);
+		this.iconIndex = 1;
 	}
 
 	@Override
@@ -32,5 +33,10 @@ public class ItemDoorObsidian extends ItemDoor {
 				return false;
 			}
 		}
+	}
+	
+	@Override
+	public String getTextureFile() {
+		return "/nexustools/vanillaexpanded/images/item/item.png";
 	}
 }
