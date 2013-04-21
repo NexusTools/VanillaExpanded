@@ -90,8 +90,8 @@ public class VanillaExpanded {
 		if(blockDoorObsidianEnabled) {
 			blockDoorObsidian = new BlockDoorObsidian(blockDoorObsidianID).setBlockName("blockDoorObsidian").setHardness((float) obisidanAdditionHardness);
 			GameRegistry.registerBlock(blockDoorObsidian, "blockDoorObsidian");
-			GameRegistry.addRecipe(new ItemStack(blockDoorObsidian), "OOX", "OOX", "OOX", 'O', new ItemStack(Block.obsidian));
-			GameRegistry.addRecipe(new ItemStack(blockDoorObsidian), "XOO", "XOO", "XOO", 'O', new ItemStack(Block.obsidian));
+			GameRegistry.addRecipe(new ItemStack(itemDoorObsidian), "OOX", "OOX", "OOX", 'O', new ItemStack(Block.obsidian));
+			GameRegistry.addRecipe(new ItemStack(itemDoorObsidian), "XOO", "XOO", "XOO", 'O', new ItemStack(Block.obsidian));
 			LanguageRegistry.addName(blockDoorObsidian, "Obsidian Door");
 			
 			itemDoorObsidian = new ItemDoorObsidian(itemDoorObsidianID).setItemName("itemDoorObsidianID");
