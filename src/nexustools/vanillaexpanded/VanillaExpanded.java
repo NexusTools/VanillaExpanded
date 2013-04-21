@@ -10,6 +10,7 @@ import nexustools.vanillaexpanded.block.BlockButtonObsidian;
 import nexustools.vanillaexpanded.block.BlockDoorObsidian;
 import nexustools.vanillaexpanded.block.BlockFenceObsidian;
 import nexustools.vanillaexpanded.block.BlockLeverObsidian;
+import nexustools.vanillaexpanded.block.BlockPressurePlateObsidian;
 import nexustools.vanillaexpanded.block.BlockStairsObsidian;
 import nexustools.vanillaexpanded.item.ItemDoorObsidian;
 import nexustools.vanillaexpanded.item.ItemStickObsidian;
@@ -26,9 +27,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(modid = "VanillaExpanded")
 @NetworkMod(clientSideRequired = true)
 public class VanillaExpanded {
-	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockLeverObsidianEnabled = true;
-	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockLeverObsidianID;
-	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockLeverObsidian;
+	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true;
+	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID;
+	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockLeverObsidian, blockPressurePlateObsidian;
 
 	public static int itemDoorObsidianID;
 	public static Item itemDoorObsidian;
@@ -49,6 +50,7 @@ public class VanillaExpanded {
 		blockDoorObsidianID = conf.getBlock("blockDoorObsidianID", 677).getInt();
 		blockFenceObsidianID = conf.getBlock("blockFenceObsidianID", 678).getInt();
 		blockLeverObsidianID = conf.getBlock("blockLeverObsidianID", 679).getInt();
+		blockPressurePlateObsidianID = conf.getBlock("blockPressurePlateObsidianID", 680).getInt();
 
 		itemDoorObsidianID = conf.getItem("itemDoorObsidianID", 6550).getInt();
 		itemStickObsidianID = conf.getItem("itemStickObsidian", 6551).getInt();
@@ -58,6 +60,7 @@ public class VanillaExpanded {
 		blockDoorObsidianEnabled = conf.get("Obsidian Additions", "blockDoorObsidianEnabled", blockDoorObsidianEnabled).getBoolean(true);
 		blockFenceObsidianEnabled = conf.get("Obsidian Additions", "blockFenceObsidianEnabled", blockFenceObsidianEnabled).getBoolean(true);
 		blockLeverObsidianEnabled = conf.get("Obsidian Additions", "blockLeverObsidianEnabled", blockLeverObsidianEnabled).getBoolean(true);
+		blockPressurePlateObsidianEnabled = conf.get("Obsidian Additions", "blockPressurePlateObsidianEnabled", blockPressurePlateObsidianEnabled).getBoolean(true);
 
 		// TODO: This seems to init with 0? Programming problem, the value seems to be 50.0 even at this point though.
 		obisidanAdditionHardness = conf.get("Obsidian Additions", "obisidanAdditionHardness", obisidanAdditionHardness).getDouble(Block.obsidian.getBlockHardness(null, 0, 0, 0) /* The arguments are irrelevant, not used and is very odd that there's no statically available method... */);
@@ -121,6 +124,12 @@ public class VanillaExpanded {
 			GameRegistry.addRecipe(new ItemStack(blockLeverObsidian), "XXX", "XSX", "XOX", 'O', new ItemStack(Block.obsidian), 'S', new ItemStack(itemStickObsidian));
 			GameRegistry.addRecipe(new ItemStack(blockLeverObsidian), "XXX", "XXS", "XXO", 'O', new ItemStack(Block.obsidian), 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockLeverObsidian, "Obsidian Lever");
+		}
+		
+		if(blockPressurePlateObsidianEnabled) {
+			blockPressurePlateObsidian = new BlockPressurePlateObsidian(blockPressurePlateObsidianID).setBlockName("blockPressurePlateObsidian").setHardness((float) obisidanAdditionHardness);
+			GameRegistry.registerBlock(blockPressurePlateObsidian, "blockPressurePlateObsidian");
+			LanguageRegistry.addName(blockPressurePlateObsidian, "Obsidian Pressure Plate");
 		}
 	}
 }
