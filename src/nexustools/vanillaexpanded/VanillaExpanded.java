@@ -1,10 +1,12 @@
 package nexustools.vanillaexpanded;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
 import nexustools.vanillaexpanded.block.BlockButtonObsidian;
 import nexustools.vanillaexpanded.block.BlockDoorObsidian;
 import nexustools.vanillaexpanded.block.BlockStairsObsidian;
+import nexustools.vanillaexpanded.item.ItemDoorObsidian;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PreInit;
@@ -18,11 +20,13 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true)
 public class VanillaExpanded {
 	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true;
-
 	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID;
-
 	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian;
 
+	public static int itemDoorObsidianID;
+	
+	public static Item itemDoorObsidian;
+	
 	public static double obisidanAdditionHardness;
 
 	@PreInit
@@ -32,6 +36,8 @@ public class VanillaExpanded {
 		blockButtonObsidianID = conf.getBlock("blockButtonObsidianID", 675).getInt();
 		blockStairObsidianID = conf.getBlock("blockStairObsidianID", 676).getInt();
 		blockDoorObsidianID = conf.getBlock("blockDoorObsidianID", 677).getInt();
+		
+		itemDoorObsidianID = conf.getItem("itemDoorObsidianID", 6550).getInt();
 
 		blockButtonObsidianEnabled = conf.get("Obsidian Additions", "blockButtonObsidianEnabled", blockButtonObsidianEnabled).getBoolean(true);
 		blockStairObsidianEnabled = conf.get("Obsidian Additions", "blockStairObsidianEnabled", blockStairObsidianEnabled).getBoolean(true);
@@ -58,6 +64,9 @@ public class VanillaExpanded {
 			blockDoorObsidian = new BlockDoorObsidian(blockDoorObsidianID).setBlockName("blockDoorObsidian").setHardness((float) obisidanAdditionHardness);
 			GameRegistry.registerBlock(blockDoorObsidian, "blockDoorObsidian");
 			LanguageRegistry.addName(blockDoorObsidian, "Obsidian Door");
+			
+			itemDoorObsidian = new ItemDoorObsidian(itemDoorObsidianID).setItemName("itemDoorObsidianID");
+			LanguageRegistry.addName(itemDoorObsidian, "Obsidian Door");
 		}
 	}
 }
