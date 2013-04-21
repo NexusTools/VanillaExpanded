@@ -83,21 +83,21 @@ public class VanillaExpanded {
 		}
 
 		if(blockButtonObsidianEnabled) {
-			blockButtonObsidian = new BlockButtonObsidian(blockButtonObsidianID).setBlockName("blockButtonObsidian").setHardness((float) obisidanAdditionHardness);
+			blockButtonObsidian = new BlockButtonObsidian(blockButtonObsidianID).setBlockName("blockButtonObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockButtonObsidian, "blockButtonObsidian");
 			GameRegistry.addShapelessRecipe(new ItemStack(blockButtonObsidian), new ItemStack(Block.obsidian));
 			LanguageRegistry.addName(blockButtonObsidian, "Obsidian Button");
 		}
 
 		if(blockStairObsidianEnabled) {
-			blockStairObsidian = new BlockStairsObsidian(blockStairObsidianID, Block.obsidian).setBlockName("blockStairObsidian").setHardness((float) obisidanAdditionHardness);
+			blockStairObsidian = new BlockStairsObsidian(blockStairObsidianID, Block.obsidian).setBlockName("blockStairObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockStairObsidian, "blockStairObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockStairObsidian), "OXX", "OOX", "OOO", 'O', new ItemStack(Block.obsidian));
 			LanguageRegistry.addName(blockStairObsidian, "Obsidian Stairs");
 		}
 
 		if(blockDoorObsidianEnabled) {
-			blockDoorObsidian = new BlockDoorObsidian(blockDoorObsidianID).setBlockName("blockDoorObsidian").setHardness((float) obisidanAdditionHardness);
+			blockDoorObsidian = new BlockDoorObsidian(blockDoorObsidianID).setBlockName("blockDoorObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockDoorObsidian, "blockDoorObsidian");
 			LanguageRegistry.addName(blockDoorObsidian, "Obsidian Door");
 			
@@ -108,7 +108,7 @@ public class VanillaExpanded {
 		}
 
 		if(blockFenceObsidianEnabled) {
-			blockFenceObsidian = new BlockFenceObsidian(blockFenceObsidianID).setBlockName("blockFenceObsidian").setHardness((float) obisidanAdditionHardness);
+			blockFenceObsidian = new BlockFenceObsidian(blockFenceObsidianID).setBlockName("blockFenceObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockFenceObsidian, "blockFenceObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockFenceObsidian), "SSS", "SSS", "XXX", 'S', new ItemStack(itemStickObsidian));
 			GameRegistry.addRecipe(new ItemStack(blockFenceObsidian), "XXX", "SSS", "SSS", 'S', new ItemStack(itemStickObsidian));
@@ -116,7 +116,7 @@ public class VanillaExpanded {
 		}
 
 		if(blockLeverObsidianEnabled) {
-			blockLeverObsidian = new BlockLeverObsidian(blockLeverObsidianID).setBlockName("blockLeverObsidian").setHardness((float) obisidanAdditionHardness);
+			blockLeverObsidian = new BlockLeverObsidian(blockLeverObsidianID).setBlockName("blockLeverObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockLeverObsidian, "blockLeverObsidian");
 			//Is this really neccessary?
 			GameRegistry.addRecipe(new ItemStack(blockLeverObsidian), "SXX", "OXX", "XXX", 'O', new ItemStack(Block.obsidian), 'S', new ItemStack(itemStickObsidian));
@@ -129,7 +129,7 @@ public class VanillaExpanded {
 		}
 		
 		if(blockPressurePlateObsidianEnabled) {
-			blockPressurePlateObsidian = new BlockPressurePlateObsidian(blockPressurePlateObsidianID).setBlockName("blockPressurePlateObsidian").setHardness((float) obisidanAdditionHardness);
+			blockPressurePlateObsidian = new BlockPressurePlateObsidian(blockPressurePlateObsidianID).setBlockName("blockPressurePlateObsidian").setHardness((float) obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockPressurePlateObsidian, "blockPressurePlateObsidian");
 			LanguageRegistry.addName(blockPressurePlateObsidian, "Obsidian Pressure Plate");
 		}
