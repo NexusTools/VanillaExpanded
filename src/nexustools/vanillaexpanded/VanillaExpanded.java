@@ -184,6 +184,7 @@ public class VanillaExpanded {
 			blockHollowObsidian = new Block(blockHollowObsidianID, Block.obsidian.blockIndexInTexture, Material.rock).setBlockName("blockHollowObsidian").setHardness(hollowObsidianHardness).setCreativeTab(CreativeTabs.tabBlock);
 			GameRegistry.registerBlock(blockHollowObsidian, "blockHollowObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockHollowObsidian, 8), "OOO", "OXO", "OOO", 'O', new ItemStack(Block.obsidian));
+			GameRegistry.addRecipe(new ItemStack(Block.obsidian, 8), "OOO", "OXO", "OOO", 'O', new ItemStack(blockHollowObsidian));
 			LanguageRegistry.addName(blockHollowObsidian, "Hollow Obsidian");
 		}
 	}
