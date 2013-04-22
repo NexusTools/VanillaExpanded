@@ -14,6 +14,7 @@ import nexustools.vanillaexpanded.block.BlockLeverObsidian;
 import nexustools.vanillaexpanded.block.BlockPressurePlateObsidian;
 import nexustools.vanillaexpanded.block.BlockStairsObsidian;
 import nexustools.vanillaexpanded.block.BlockTorchObsidian;
+import nexustools.vanillaexpanded.block.BlockTrapDoorObsidian;
 import nexustools.vanillaexpanded.item.ItemDoorObsidian;
 import nexustools.vanillaexpanded.item.ItemStickObsidian;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -30,9 +31,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true)
 public class VanillaExpanded {
 	public static final String BLOCK_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/block/block.png", ITEM_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/item/item.png";
-	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTorchObsidianEnabled = true;
-	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTorchObsidianID;
-	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian;
+	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTrapDoorObsidianEnabled = true, blockTorchObsidianEnabled = true;
+	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTrapDoorObsidianID, blockTorchObsidianID;
+	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian, blockTrapDoorObsidian;
 
 	public static int itemDoorObsidianID;
 	public static Item itemDoorObsidian;
@@ -58,6 +59,7 @@ public class VanillaExpanded {
 		blockPressurePlateObsidianEnabled = conf.get("Obsidian Additions", "blockPressurePlateObsidianEnabled", blockPressurePlateObsidianEnabled).getBoolean(true);
 		blockLadderObsidianEnabled = conf.get("Obsidian Additions", "blockLadderObsidianEnabled", blockLadderObsidianEnabled).getBoolean(true);
 		blockTorchObsidianEnabled = conf.get("Obsidian Additions", "blockTorchObsidianEnabled", blockTorchObsidianEnabled).getBoolean(true);
+		blockTrapDoorObsidianEnabled = conf.get("Obsidian Additions", "blockTrapDoorObsidianEnabled", blockTrapDoorObsidianEnabled).getBoolean(true);
 		
 		if(blockButtonObsidianEnabled)
 			blockButtonObsidianID = conf.getBlock("blockButtonObsidianID", 675).getInt();
@@ -75,8 +77,10 @@ public class VanillaExpanded {
 			blockPressurePlateObsidianID = conf.getBlock("blockPressurePlateObsidianID", 680).getInt();
 		if(blockLadderObsidianEnabled)
 			blockLadderObsidianID = conf.getBlock("blockLadderObsidianID", 681).getInt();
+		if(blockTrapDoorObsidianEnabled)
+			blockTrapDoorObsidianID = conf.getBlock("blockTrapDoorObsidianID", 682).getInt();
 		if(blockTorchObsidianEnabled)
-			blockTorchObsidianID = conf.getBlock("blockTorchObsidianID", 682).getInt();
+			blockTorchObsidianID = conf.getBlock("blockTorchObsidianID", 683).getInt();
 		
 		if(blockFenceObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled)
 			itemStickObsidianID = conf.getItem("itemStickObsidian", 6551).getInt();
@@ -144,6 +148,13 @@ public class VanillaExpanded {
 			GameRegistry.registerBlock(blockLadderObsidian, "blockLadderObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockLadderObsidian), "SXS", "SSS", "SXS", 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockLadderObsidian, "Obsidian Ladder");
+		}
+		
+		if(blockTrapDoorObsidianEnabled) {
+			blockTrapDoorObsidian = new BlockTrapDoorObsidian(blockTrapDoorObsidianID).setBlockName("blockTrapDoorObsidian").setHardness(obisidanAdditionHardness).setRequiresSelfNotify();
+			GameRegistry.registerBlock(blockTrapDoorObsidian, "blockTrapDoorObsidian");
+			GameRegistry.addRecipe(new ItemStack(blockTrapDoorObsidian), "OOO", "OOO", 'O', new ItemStack(Block.obsidian));
+			LanguageRegistry.addName(blockTrapDoorObsidian, "Obsidian Trapdoor");
 		}
 		
 		if(blockTorchObsidianEnabled) {
