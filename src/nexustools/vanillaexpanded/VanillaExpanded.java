@@ -149,7 +149,6 @@ public class VanillaExpanded {
 		if(blockTorchObsidianEnabled) {
 			blockTorchObsidian = new BlockTorchObsidian(blockTorchObsidianID).setBlockName("blockTorchObsidian").setHardness(obisidanAdditionHardness);
 			GameRegistry.registerBlock(blockTorchObsidian, "blockTorchObsidian");
-			/* I must be doing this wrong... */
 			GameRegistry.addRecipe(new ItemStack(blockTorchObsidian), "C", "S", 'C', new ItemStack(Item.coal, 1, 0), 'S', new ItemStack(itemStickObsidian));
 			GameRegistry.addRecipe(new ItemStack(blockTorchObsidian), "C", "S", 'C', new ItemStack(Item.coal, 1, 1), 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockTorchObsidian, "Obsidian Torch");
