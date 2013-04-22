@@ -1,6 +1,7 @@
 package nexustools.vanillaexpanded.block;
 
 import net.minecraft.block.BlockLever;
+import nexustools.vanillaexpanded.VanillaExpanded;
 
 public class BlockLeverObsidian extends BlockLever {
 	public BlockLeverObsidian(int id) {
@@ -9,6 +10,6 @@ public class BlockLeverObsidian extends BlockLever {
 	
 	@Override
 	public String getTextureFile() {
-		return "/nexustools/vanillaexpanded/images/block/block.png";
+		return VanillaExpanded.BLOCK_TEXTURE_LOCATION;
 	}
 }

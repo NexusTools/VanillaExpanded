@@ -37,6 +37,6 @@ public class ItemDoorObsidian extends ItemDoor {
 	
 	@Override
 	public String getTextureFile() {
-		return "/nexustools/vanillaexpanded/images/item/item.png";
+		return VanillaExpanded.ITEM_TEXTURE_LOCATION;
 	}
 }

@@ -1,6 +1,7 @@
 package nexustools.vanillaexpanded.item;
 
 import net.minecraft.item.Item;
+import nexustools.vanillaexpanded.VanillaExpanded;
 
 public class ItemStickObsidian extends Item {
 	public ItemStickObsidian(int id) {
@@ -10,6 +11,6 @@ public class ItemStickObsidian extends Item {
 	
 	@Override
 	public String getTextureFile() {
-		return "/nexustools/vanillaexpanded/images/item/item.png";
+		return VanillaExpanded.ITEM_TEXTURE_LOCATION;
 	}
 }

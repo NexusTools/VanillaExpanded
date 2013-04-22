@@ -1,14 +1,13 @@
 package nexustools.vanillaexpanded.block;
 
-import net.minecraft.block.BlockLadder;
+import net.minecraft.block.BlockTorch;
 import nexustools.vanillaexpanded.VanillaExpanded;
 
-public class BlockLadderObsidian extends BlockLadder {
-	public BlockLadderObsidian(int id) {
-		super(id, 1);
+public class BlockTorchObsidian extends BlockTorch {
+	public BlockTorchObsidian(int id) {
+		super(id, 3);
 	}
 	
-	@Override
 	public String getTextureFile() {
 		return VanillaExpanded.BLOCK_TEXTURE_LOCATION;
 	}

@@ -20,6 +20,6 @@ public class BlockDoorObsidian extends BlockDoor {
 	
 	@Override
 	public String getTextureFile() {
-		return "/nexustools/vanillaexpanded/images/block/block.png";
+		return VanillaExpanded.BLOCK_TEXTURE_LOCATION;
 	}
 }
