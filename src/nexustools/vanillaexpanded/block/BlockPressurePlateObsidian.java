@@ -9,4 +9,9 @@ public class BlockPressurePlateObsidian extends BlockPressurePlate {
 	public BlockPressurePlateObsidian(int id) {
 		super(id, Block.obsidian.blockIndexInTexture, EnumMobType.players, Material.rock);
 	}
+	
+	@Override
+	public int tickRate() {
+		return 50;
+	}
 }

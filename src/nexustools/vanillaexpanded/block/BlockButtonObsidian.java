@@ -7,4 +7,9 @@ public class BlockButtonObsidian extends BlockButton {
 	public BlockButtonObsidian(int id) {
 		super(id, Block.obsidian.blockIndexInTexture, false);
 	}
+	
+	@Override
+	public int tickRate() {
+		return 50;
+	}
 }
