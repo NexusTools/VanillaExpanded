@@ -1,6 +1,7 @@
 package nexustools.vanillaexpanded;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,9 +33,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true)
 public class VanillaExpanded {
 	public static final String BLOCK_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/block/block.png", ITEM_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/item/item.png";
-	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockFenceGateObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTrapDoorObsidianEnabled = true, blockTorchObsidianEnabled = true;
-	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockFenceGateObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTrapDoorObsidianID, blockTorchObsidianID;
-	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockFenceGateObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian, blockTrapDoorObsidian;
+	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockFenceGateObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTrapDoorObsidianEnabled = true, blockTorchObsidianEnabled = true, blockHollowObsidianEnabled = true;
+	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockFenceGateObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTrapDoorObsidianID, blockTorchObsidianID, blockHollowObsidianID;
+	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockFenceGateObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian, blockTrapDoorObsidian, blockHollowObsidian;
 
 	public static int itemDoorObsidianID;
 	public static Item itemDoorObsidian;
@@ -42,7 +43,7 @@ public class VanillaExpanded {
 	public static int itemStickObsidianID;
 	public static Item itemStickObsidian;
 
-	public static float obisidanAdditionHardness;
+	public static float obisidanAdditionHardness, hollowObsidianHardness;
 
 	@PreInit
 	public void preload(FMLPreInitializationEvent iEvent) {
@@ -62,6 +63,7 @@ public class VanillaExpanded {
 		blockLadderObsidianEnabled = conf.get("Obsidian Additions", "blockLadderObsidianEnabled", blockLadderObsidianEnabled).getBoolean(true);
 		blockTorchObsidianEnabled = conf.get("Obsidian Additions", "blockTorchObsidianEnabled", blockTorchObsidianEnabled).getBoolean(true);
 		blockTrapDoorObsidianEnabled = conf.get("Obsidian Additions", "blockTrapDoorObsidianEnabled", blockTrapDoorObsidianEnabled).getBoolean(true);
+		blockHollowObsidianEnabled = conf.get("Obsidian Additions", "blockHollowObsidianEnabled", blockHollowObsidianEnabled).getBoolean(true);
 		
 		if(blockButtonObsidianEnabled)
 			blockButtonObsidianID = conf.getBlock("blockButtonObsidianID", 675).getInt();
@@ -85,11 +87,14 @@ public class VanillaExpanded {
 			blockTrapDoorObsidianID = conf.getBlock("blockTrapDoorObsidianID", 683).getInt();
 		if(blockTorchObsidianEnabled)
 			blockTorchObsidianID = conf.getBlock("blockTorchObsidianID", 684).getInt();
+		if(blockHollowObsidianEnabled)
+			blockHollowObsidianID = conf.getBlock("blockHollowObsidianID", 685).getInt();
 		
 		if(blockFenceObsidianEnabled || blockFenceGateObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled)
 			itemStickObsidianID = conf.getItem("itemStickObsidian", 6551).getInt();
 		
 		obisidanAdditionHardness = (float)conf.get("Obsidian Additions", "obisidanAdditionHardness", Block.obsidian.getBlockHardness(null, 0, 0, 0)).getDouble(Block.obsidian.getBlockHardness(null, 0, 0, 0)); // The arguments are irrelevant, not used and is very odd that there's no statically available method...
+		hollowObsidianHardness = (float)conf.get("Obsidian Additions", "hollowObsidianHardness", obisidanAdditionHardness / 8).getDouble(obisidanAdditionHardness / 8);
 		conf.save();
 	}
 
@@ -173,6 +178,13 @@ public class VanillaExpanded {
 			GameRegistry.addRecipe(new ItemStack(blockTorchObsidian), "C", "S", 'C', new ItemStack(Item.coal, 1, 0), 'S', new ItemStack(itemStickObsidian));
 			GameRegistry.addRecipe(new ItemStack(blockTorchObsidian), "C", "S", 'C', new ItemStack(Item.coal, 1, 1), 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockTorchObsidian, "Obsidian Torch");
+		}
+		
+		if(blockHollowObsidianEnabled) {
+			blockHollowObsidian = new Block(blockHollowObsidianID, Block.obsidian.blockIndexInTexture, Material.rock).setBlockName("blockHollowObsidian").setHardness(hollowObsidianHardness).setCreativeTab(CreativeTabs.tabBlock);
+			GameRegistry.registerBlock(blockHollowObsidian, "blockHollowObsidian");
+			GameRegistry.addRecipe(new ItemStack(blockHollowObsidian, 8), "OOO", "OXO", "OOO", 'O', new ItemStack(Block.obsidian));
+			LanguageRegistry.addName(blockHollowObsidian, "Hollow Obsidian");
 		}
 	}
 }
