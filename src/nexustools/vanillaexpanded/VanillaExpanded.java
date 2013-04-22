@@ -8,6 +8,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.Configuration;
 import nexustools.vanillaexpanded.block.BlockButtonObsidian;
 import nexustools.vanillaexpanded.block.BlockDoorObsidian;
+import nexustools.vanillaexpanded.block.BlockFenceGateObsidian;
 import nexustools.vanillaexpanded.block.BlockFenceObsidian;
 import nexustools.vanillaexpanded.block.BlockLadderObsidian;
 import nexustools.vanillaexpanded.block.BlockLeverObsidian;
@@ -31,9 +32,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true)
 public class VanillaExpanded {
 	public static final String BLOCK_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/block/block.png", ITEM_TEXTURE_LOCATION = "/nexustools/vanillaexpanded/images/item/item.png";
-	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTrapDoorObsidianEnabled = true, blockTorchObsidianEnabled = true;
-	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTrapDoorObsidianID, blockTorchObsidianID;
-	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian, blockTrapDoorObsidian;
+	public static boolean blockButtonObsidianEnabled = true, blockStairObsidianEnabled = true, blockDoorObsidianEnabled = true, blockFenceObsidianEnabled = true, blockFenceGateObsidianEnabled = true, blockLeverObsidianEnabled = true, blockPressurePlateObsidianEnabled = true, blockLadderObsidianEnabled = true, blockTrapDoorObsidianEnabled = true, blockTorchObsidianEnabled = true;
+	public static int blockButtonObsidianID, blockStairObsidianID, blockDoorObsidianID, blockFenceObsidianID, blockFenceGateObsidianID, blockLeverObsidianID, blockPressurePlateObsidianID, blockLadderObsidianID, blockTrapDoorObsidianID, blockTorchObsidianID;
+	public static Block blockButtonObsidian, blockStairObsidian, blockDoorObsidian, blockFenceObsidian, blockFenceGateObsidian, blockLeverObsidian, blockPressurePlateObsidian, blockLadderObsidian, blockTorchObsidian, blockTrapDoorObsidian;
 
 	public static int itemDoorObsidianID;
 	public static Item itemDoorObsidian;
@@ -55,6 +56,7 @@ public class VanillaExpanded {
 		blockStairObsidianEnabled = conf.get("Obsidian Additions", "blockStairObsidianEnabled", blockStairObsidianEnabled).getBoolean(true);
 		blockDoorObsidianEnabled = conf.get("Obsidian Additions", "blockDoorObsidianEnabled", blockDoorObsidianEnabled).getBoolean(true);
 		blockFenceObsidianEnabled = conf.get("Obsidian Additions", "blockFenceObsidianEnabled", blockFenceObsidianEnabled).getBoolean(true);
+		blockFenceGateObsidianEnabled = conf.get("Obsidian Additions", "blockFenceGateObsidianEnabled", blockFenceGateObsidianEnabled).getBoolean(true);
 		blockLeverObsidianEnabled = conf.get("Obsidian Additions", "blockLeverObsidianEnabled", blockLeverObsidianEnabled).getBoolean(true);
 		blockPressurePlateObsidianEnabled = conf.get("Obsidian Additions", "blockPressurePlateObsidianEnabled", blockPressurePlateObsidianEnabled).getBoolean(true);
 		blockLadderObsidianEnabled = conf.get("Obsidian Additions", "blockLadderObsidianEnabled", blockLadderObsidianEnabled).getBoolean(true);
@@ -71,18 +73,20 @@ public class VanillaExpanded {
 		}
 		if(blockFenceObsidianEnabled)
 			blockFenceObsidianID = conf.getBlock("blockFenceObsidianID", 678).getInt();
+		if(blockFenceGateObsidianEnabled)
+			blockFenceGateObsidianID = conf.getBlock("blockFenceGateObsidianID", 679).getInt();
 		if(blockLeverObsidianEnabled)
-			blockLeverObsidianID = conf.getBlock("blockLeverObsidianID", 679).getInt();
+			blockLeverObsidianID = conf.getBlock("blockLeverObsidianID", 680).getInt();
 		if(blockPressurePlateObsidianEnabled)
-			blockPressurePlateObsidianID = conf.getBlock("blockPressurePlateObsidianID", 680).getInt();
+			blockPressurePlateObsidianID = conf.getBlock("blockPressurePlateObsidianID", 681).getInt();
 		if(blockLadderObsidianEnabled)
-			blockLadderObsidianID = conf.getBlock("blockLadderObsidianID", 681).getInt();
+			blockLadderObsidianID = conf.getBlock("blockLadderObsidianID", 682).getInt();
 		if(blockTrapDoorObsidianEnabled)
-			blockTrapDoorObsidianID = conf.getBlock("blockTrapDoorObsidianID", 682).getInt();
+			blockTrapDoorObsidianID = conf.getBlock("blockTrapDoorObsidianID", 683).getInt();
 		if(blockTorchObsidianEnabled)
-			blockTorchObsidianID = conf.getBlock("blockTorchObsidianID", 683).getInt();
+			blockTorchObsidianID = conf.getBlock("blockTorchObsidianID", 684).getInt();
 		
-		if(blockFenceObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled)
+		if(blockFenceObsidianEnabled || blockFenceGateObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled)
 			itemStickObsidianID = conf.getItem("itemStickObsidian", 6551).getInt();
 		
 		obisidanAdditionHardness = (float)conf.get("Obsidian Additions", "obisidanAdditionHardness", Block.obsidian.getBlockHardness(null, 0, 0, 0)).getDouble(Block.obsidian.getBlockHardness(null, 0, 0, 0)); // The arguments are irrelevant, not used and is very odd that there's no statically available method...
@@ -91,7 +95,7 @@ public class VanillaExpanded {
 
 	@Init
 	public void load(FMLInitializationEvent iEvent) {
-		if(blockFenceObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled) { // Sticks are needed, initialize them.
+		if(blockFenceObsidianEnabled || blockFenceGateObsidianEnabled || blockLeverObsidianEnabled || blockLadderObsidianEnabled || blockTorchObsidianEnabled) { // Sticks are needed, initialize them.
 			itemStickObsidian = new ItemStickObsidian(itemStickObsidianID).setItemName("itemStickObsidian").setCreativeTab(CreativeTabs.tabMaterials);
 			GameRegistry.addRecipe(new ItemStack(itemStickObsidian, 4), "O", "O", 'O', new ItemStack(Block.obsidian));
 			LanguageRegistry.addName(itemStickObsidian, "Obsidian Stick");
@@ -105,7 +109,7 @@ public class VanillaExpanded {
 		}
 
 		if(blockStairObsidianEnabled) {
-			blockStairObsidian = new BlockStairsObsidian(blockStairObsidianID, Block.obsidian).setBlockName("blockStairObsidian").setHardness(obisidanAdditionHardness).setRequiresSelfNotify();
+			blockStairObsidian = new BlockStairsObsidian(blockStairObsidianID, Block.obsidian).setBlockName("blockStairObsidian").setHardness(obisidanAdditionHardness);
 			GameRegistry.registerBlock(blockStairObsidian, "blockStairObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockStairObsidian), "OXX", "OOX", "OOO", 'O', new ItemStack(Block.obsidian));
 			LanguageRegistry.addName(blockStairObsidian, "Obsidian Stairs");
@@ -122,16 +126,22 @@ public class VanillaExpanded {
 		}
 
 		if(blockFenceObsidianEnabled) {
-			blockFenceObsidian = new BlockFenceObsidian(blockFenceObsidianID).setBlockName("blockFenceObsidian").setHardness(obisidanAdditionHardness).setRequiresSelfNotify();
+			blockFenceObsidian = new BlockFenceObsidian(blockFenceObsidianID).setBlockName("blockFenceObsidian").setHardness(obisidanAdditionHardness);
 			GameRegistry.registerBlock(blockFenceObsidian, "blockFenceObsidian");
 			GameRegistry.addRecipe(new ItemStack(blockFenceObsidian), "SSS", "SSS", 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockFenceObsidian, "Obsidian Fence");
+		}
+		
+		if(blockFenceGateObsidianEnabled) {
+			blockFenceGateObsidian = new BlockFenceGateObsidian(blockFenceGateObsidianID).setBlockName("blockFenceGateObsidian").setHardness(obisidanAdditionHardness).setRequiresSelfNotify();
+			GameRegistry.registerBlock(blockFenceGateObsidian, "blockFenceGateObsidian");
+			GameRegistry.addRecipe(new ItemStack(blockFenceGateObsidian), "SOS", "SOS", 'S', new ItemStack(itemStickObsidian), 'O', new ItemStack(Block.obsidian));
+			LanguageRegistry.addName(blockFenceGateObsidian, "Obsidian Gate");
 		}
 
 		if(blockLeverObsidianEnabled) {
 			blockLeverObsidian = new BlockLeverObsidian(blockLeverObsidianID).setBlockName("blockLeverObsidian").setHardness(obisidanAdditionHardness).setRequiresSelfNotify();
 			GameRegistry.registerBlock(blockLeverObsidian, "blockLeverObsidian");
-			//Is this really neccessary?
 			GameRegistry.addRecipe(new ItemStack(blockLeverObsidian), "S", "O", 'O', new ItemStack(Block.obsidian), 'S', new ItemStack(itemStickObsidian));
 			LanguageRegistry.addName(blockLeverObsidian, "Obsidian Lever");
 		}
