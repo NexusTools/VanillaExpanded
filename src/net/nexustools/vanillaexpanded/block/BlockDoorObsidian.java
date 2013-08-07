@@ -1,4 +1,4 @@
-package nexustools.vanillaexpanded.block;
+package net.nexustools.vanillaexpanded.block;
 
 import java.util.Random;
 

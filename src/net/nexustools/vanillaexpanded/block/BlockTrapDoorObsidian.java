@@ -1,8 +1,8 @@
-package nexustools.vanillaexpanded.block;
+package net.nexustools.vanillaexpanded.block;
 
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class BlockTrapDoorObsidian extends BlockTrapDoor {
 	public BlockTrapDoorObsidian(int id) {

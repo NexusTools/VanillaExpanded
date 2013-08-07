@@ -1,7 +1,7 @@
-package nexustools.vanillaexpanded.block;
+package net.nexustools.vanillaexpanded.block;
 
 import net.minecraft.block.BlockLadder;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class BlockLadderObsidian extends BlockLadder {
 	public BlockLadderObsidian(int id) {

@@ -1,7 +1,7 @@
-package nexustools.vanillaexpanded.block;
+package net.nexustools.vanillaexpanded.block;
 
 import net.minecraft.block.BlockTorch;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class BlockTorchObsidian extends BlockTorch {
 	public BlockTorchObsidian(int id) {

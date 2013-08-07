@@ -1,7 +1,7 @@
-package nexustools.vanillaexpanded.block;
+package net.nexustools.vanillaexpanded.block;
 
 import net.minecraft.block.BlockLever;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class BlockLeverObsidian extends BlockLever {
 	public BlockLeverObsidian(int id) {

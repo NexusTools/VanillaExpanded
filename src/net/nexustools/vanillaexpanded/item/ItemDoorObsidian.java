@@ -1,4 +1,4 @@
-package nexustools.vanillaexpanded.item;
+package net.nexustools.vanillaexpanded.item;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -6,7 +6,7 @@ import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class ItemDoorObsidian extends ItemDoor {
 	public ItemDoorObsidian(int id) {

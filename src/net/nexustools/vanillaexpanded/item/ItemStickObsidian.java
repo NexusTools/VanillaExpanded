@@ -1,7 +1,7 @@
-package nexustools.vanillaexpanded.item;
+package net.nexustools.vanillaexpanded.item;
 
 import net.minecraft.item.Item;
-import nexustools.vanillaexpanded.VanillaExpanded;
+import net.nexustools.vanillaexpanded.VanillaExpanded;
 
 public class ItemStickObsidian extends Item {
 	public ItemStickObsidian(int id) {
